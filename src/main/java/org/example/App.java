@@ -74,7 +74,7 @@ public class App {
                         // Crear una instancia del descompresor y realizar la descompresión
                         Descompresor descompresor = new Descompresor();
                         descompresor.descomprimir(rutaHuff, rutaHuffTree, rutaSalida);
-                        System.out.println("Descompresión completada. Archivo guardado en /output/" + nombreSalida);
+                        System.out.println("Descompresión completada. Archivo guardado en /archivos-txt/" + nombreSalida);
                     } catch (IOException e) {
                         System.err.println("Error al descomprimir: " + e.getMessage());
                     }
