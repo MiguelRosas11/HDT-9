@@ -2,12 +2,23 @@ package org.example;
 import java.io.*;
 import java.util.Scanner;
 
+/**
+ * Clase principal que actúa como interfaz de usuario para el programa de compresión
+ * y descompresión de archivos utilizando el algoritmo de Huffman.
+ * Permite al usuario comprimir y descomprimir archivos de texto a través de del menú.
+ */
 public class App {
 
+    /**
+     * Método principal que ejecuta el programa.
+     * 
+     * @param args Argumentos de línea de comandos (no utilizados en este programa).
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        //IMPORTANTE: Cambia la ruta base a la ubicación de tus archivos donde está la carpeta de todo el proyecto
+        // IMPORTANTE: Cambia la ruta base a la ubicación de tus archivos donde está la carpeta de todo el proyecto
         String base = "C:/Users/juang/OneDrive/Documents/Algoritmos y estructura de datos java/ejercicio1/HDT-9";
+        // También es importante tener las carpetas de archivos-txt y archivos-huff en la carpeta del proyecto
         String inputDir = base + "/archivos-txt";
         String outputDir = base + "/archivos-huff";
 
@@ -37,6 +48,7 @@ public class App {
                         String nombreTree = scanner.nextLine();
                         String rutaHuffTree = outputDir + "/" + nombreTree;
 
+                        // Crear una instancia del compresor y realizar la compresión
                         Compresor compresor = new Compresor();
                         compresor.comprimir(rutaEntrada, rutaHuff, rutaHuffTree);
                         System.out.println("Compresión completada. Archivos generados en /archivos-huff/");
@@ -59,6 +71,7 @@ public class App {
                         String nombreSalida = scanner.nextLine();
                         String rutaSalida = inputDir + "/" + nombreSalida;
 
+                        // Crear una instancia del descompresor y realizar la descompresión
                         Descompresor descompresor = new Descompresor();
                         descompresor.descomprimir(rutaHuff, rutaHuffTree, rutaSalida);
                         System.out.println("Descompresión completada. Archivo guardado en /output/" + nombreSalida);
@@ -68,11 +81,13 @@ public class App {
                     break;
 
                 case "3":
+                    // Finalizar el programa
                     System.out.println("Programa finalizado.");
                     scanner.close();
                     return;
 
                 default:
+                    // Manejar opciones inválidas
                     System.out.println("Opción inválida. Intenta de nuevo.");
             }
         }
