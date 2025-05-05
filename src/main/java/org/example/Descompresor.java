@@ -48,14 +48,17 @@ public class Descompresor {
 
     private String leerBitsDesdeArchivo(String ruta) throws IOException {
         StringBuilder bits = new StringBuilder();
-        try (FileInputStream entrada = new FileInputStream(ruta)) {
-            int byteLeido;
-            while ((byteLeido = entrada.read()) != -1) {
-                String byteBinario = String.format("%8s", Integer.toBinaryString(byteLeido & 0xFF)).replace(' ', '0');
+        try (DataInputStream entrada = new DataInputStream(new FileInputStream(ruta))) {
+            int totalBits = entrada.readInt(); // Leer la longitud de la cadena de bits
+            
+            while ( entrada.available() > 0) {
+                int byteLeido = entrada.readUnsignedByte();
+                String byteBinario = String.format("%8s", Integer.toBinaryString(byteLeido)).replace(' ', '0');
                 bits.append(byteBinario);
             }
+
+            return bits.substring(0, totalBits); // Retornar solo la longitud especificada
         }
-        return bits.toString();
     }
 
     private String decodificar(String bits, NodoHuffman raiz) {

@@ -34,7 +34,9 @@ public class Compresor{
     }
 
     private void guardarComoBinario(String bits, String ruta) throws IOException {
-        try (FileOutputStream salida = new FileOutputStream(ruta)) {
+        try (DataOutputStream salida = new DataOutputStream(new FileOutputStream(ruta))) {
+            salida.writeInt(bits.length()); // Guardar la longitud de la cadena de bits
+            
             int len = bits.length();
             for (int i = 0; i < len; i += 8) {
                 String byteStr = bits.substring(i, Math.min(i + 8, len));
