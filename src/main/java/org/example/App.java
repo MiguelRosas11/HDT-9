@@ -69,6 +69,7 @@ public class App {
 
                 case "3":
                     System.out.println("Programa finalizado.");
+                    scanner.close();
                     return;
 
                 default:

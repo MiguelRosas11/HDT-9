@@ -1,1 +1,3 @@
-Documento de prueba para arbol de Huffman\Este documento solo es una prueba\o
+Documento de prueba para arbol de Huffman
+Este documento solo es una prueba
+o

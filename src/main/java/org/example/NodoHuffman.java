@@ -3,8 +3,7 @@ package org.example;
 public class NodoHuffman implements Comparable<NodoHuffman> {
     public char caracter;
     public int frecuencia;
-    public NodoHuffman izquierdo;
-    public NodoHuffman derecho;
+    public NodoHuffman izquierdo, derecho;
 
     public NodoHuffman(char caracter, int frecuencia) {
         this.caracter = caracter;

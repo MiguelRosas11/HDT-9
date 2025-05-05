@@ -1,7 +1,6 @@
 package org.example;
 
 import java.io.*;
-import java.util.*;
 
 public class Descompresor {
 
@@ -27,8 +26,18 @@ public class Descompresor {
 
         if (linea.startsWith("1")) {
             // Nodo hoja
-            char caracter = linea.charAt(1);
-            return new NodoHuffman(caracter, 0);
+            String contenido = linea.substring(1);
+            char caracter;
+            switch (contenido) {
+                case "\\n": caracter = '\n'; break;
+                case "\\t": caracter = '\t'; break;
+                case "\\r": caracter = '\r'; break;
+                default:
+                    caracter = contenido.charAt(0); // para caracteres normales
+                    break;
+            } 
+            return new NodoHuffman(caracter, 0); // frecuencia no es relevante para hojas
+
         } else {
             // Nodo interno
             NodoHuffman izquierdo = reconstruirArbol(lector);
